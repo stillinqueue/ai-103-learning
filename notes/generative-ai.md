@@ -276,6 +276,66 @@ the prompt defines what the assistant should do; the filter enforces what it mus
 
 ---
 
+## Azure-specific concepts to revisit
+
+### Model deployment
+
+In Azure AI Foundry, you don't call a model by its ID directly — you create a *deployment*:
+a named instance of the model with assigned quota and compute. Your app references the deployment
+name (not the model ID) as the `model` parameter in the Azure OpenAI client.
+
+### Endpoints
+
+Each Azure OpenAI resource has an endpoint URL: `https://<resource>.openai.azure.com/`.
+The `AzureOpenAI` client is initialised with this base URL. Each deployment within the resource
+is reached via the same endpoint, distinguished by deployment name.
+
+### Azure authentication
+
+Producton Azure OpenAI deployments use Entra ID (Azure Active Directory) rather than API keys.
+`DefaultAzureCredential` resolves identity from managed identity, workload identity, `az login`,
+or environment variables — no secret stored in code.
+
+```python
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+token_provider = get_bearer_token_provider(
+    DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default"
+)
+client = AzureOpenAI(azure_endpoint=ENDPOINT, azure_ad_token_provider=token_provider)
+```
+
+### Quota
+
+Quota governs tokens-per-minute and requests-per-minute per deployment per region.
+Quota is allocated at the subscription level and can vary by model, tier, and region.
+Insufficient quota prevents deployment creation. Quota increase requests can be submitted
+through the Azure portal — subject to approval and subscription type.
+
+### Deployment types
+
+| Type | Description |
+|---|---|
+| Global Standard | Traffic routed globally for higher availability |
+| Standard | Single-region, lower latency |
+| Provisioned | Reserved compute capacity, predictable throughput |
+| Batch | Async processing of large volumes at lower cost |
+
+### Guardrails
+
+Azure AI Content Safety filters run on both input and output for every call to a Foundry deployment.
+Thresholds are configurable per harm category (hate, violence, sexual, self-harm) at safe/low/medium/high
+severity. Custom guardrails can also include prompt shields (jailbreak detection) and groundedness
+checking for RAG responses.
+
+### Fine-tuning in Foundry
+
+The Azure fine-tuning workflow: upload a validated JSONL training file → create a fine-tuning job
+via the Foundry portal or SDK → monitor training progress → deploy the resulting custom model to
+an endpoint → evaluate against the pre-fine-tuning baseline → use the deployment name like any
+other model deployment.
+
+---
+
 ## What I Could Not Test Directly
 
 Because my Azure Free Trial could not obtain the required model deployment quota (GPT-5.2 was

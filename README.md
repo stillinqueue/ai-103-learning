@@ -41,3 +41,9 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 This is the next area I will continue working on in this repository. Implementations will be added
 under `implementations/agents/` as modules are completed.
+
+---
+
+## Exam revision
+
+[notes/exam-revision-checklist.md](notes/exam-revision-checklist.md) — a quick revision checklist for the AI-103 exam, covering the key concepts from the completed first learning path.
