@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AI-103 learning repo additions
+# Catch .env and .venv anywhere in the tree (root patterns above miss nested paths)
+**/.env
+**/.venv/
+*.pyc
+.DS_Store

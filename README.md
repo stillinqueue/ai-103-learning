@@ -1,2 +1,43 @@
 # ai-103-learning
-Hands-on labs and notes for Microsoft AI-103: Developing AI Apps and Agents on Azure
+
+Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on Azure**.
+
+> **Current milestone: Learning Path 1 completed. Next: Develop AI agents on Azure.**
+
+---
+
+## Progress
+
+| Learning Path | Progress | Status |
+|---|---|---|
+| [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 0 / 9 modules | ⬜ Next |
+| [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
+| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
+
+---
+
+## Completed so far
+
+**Learning Path 1 — Develop generative AI apps in Azure** was completed via Microsoft Learn. Hands-on
+labs were adapted to run in GitHub Codespaces against the OpenAI Platform API because Azure Free Trial
+quota limitations prevented the required Foundry model deployment (GPT-5.2). Core SDK concepts —
+Responses API, streaming, tool use, RAG, and fine-tuning preparation — were all practised and are
+documented here. See [comparisons/official-lab-vs-my-implementation.md](comparisons/official-lab-vs-my-implementation.md)
+for a full breakdown of what was and was not reproduced on Azure.
+
+| Area | Location |
+|---|---|
+| Responses API chat app (streaming, multi-turn) | [implementations/generative-ai/responses-api/](implementations/generative-ai/responses-api/) |
+| RAG with file search and web search tools | [implementations/generative-ai/rag/](implementations/generative-ai/rag/) |
+| Fine-tuning dataset, validation, and baseline | [implementations/generative-ai/fine-tuning/](implementations/generative-ai/fine-tuning/) |
+| Official lab vs my implementation comparison | [comparisons/official-lab-vs-my-implementation.md](comparisons/official-lab-vs-my-implementation.md) |
+
+---
+
+## Next learning path
+
+**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 0 / 9 modules**
+
+This is the next area I will continue working on in this repository. Implementations will be added
+under `implementations/agents/` as modules are completed.

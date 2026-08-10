@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/workspaces/ai-103-learning/fine-tuning/baseline-test.py", line 2, in <module>
+    from dotenv import load_dotenv
+ModuleNotFoundError: No module named 'dotenv'
