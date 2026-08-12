@@ -1,0 +1,30 @@
+Teams Notification Policy
+
+Urgency rules:
+
+Critical:
+- Complete service outage
+- Security incident affecting active systems
+- Major business process unavailable
+
+High:
+- Important service degraded
+- Significant user impact
+- Business process partially unavailable
+
+Medium:
+- Limited user impact
+- Workaround available
+- Non-critical service degradation
+
+Low:
+- Informational update
+- Planned maintenance
+- No immediate user impact
+
+Notification rules:
+- Never invent a cause.
+- Never invent a resolution.
+- Never invent an ETA.
+- Only recommend an action if the source explicitly provides one.
+- If no next action is supplied, use "Await further information."
