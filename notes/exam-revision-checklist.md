@@ -61,6 +61,21 @@
 - [ ] **Understand how tool results are passed back to the model**
   The application sends the function result back in the next API call. The model incorporates it into its final response.
 
+- [ ] **Distinguish a tool schema from a function implementation**
+  The schema describes what the model may request: the tool name, description, argument types, required fields, and validation rules. The application still owns and executes the real Python implementation.
+
+- [ ] **Understand strict function schemas**
+  `strict: true` together with `required` and `additionalProperties: false` constrains the model's JSON arguments to the declared contract.
+
+- [ ] **Understand the complete custom-function response loop**
+  The model returns function arguments as JSON. The application parses them, executes the matching local function, returns a `function_call_output` using the original `call_id`, and continues with `previous_response_id`.
+
+- [ ] **Process every returned function call**
+  A response can contain multiple function calls. Process all of them, not just the first, and continue iteratively until the model returns no more function calls.
+
+- [ ] **Remember that tools are developer-exposed capabilities**
+  The model can request only the tools supplied by the application. It cannot call arbitrary local Python functions or execute local code by itself.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
@@ -88,6 +103,18 @@
 
 - [ ] **Understand how conversation context + retrieved data can work together**
   `previous_response_id` chains conversation history. On each turn, `file_search` or `web_search` retrieve relevant data. Both are active simultaneously in the same Responses API call.
+
+- [ ] **Remember the agent design pattern: model + instructions + tools + context/state + actions**
+  An agent is more than a model call. It combines the model, the system instructions, the available tools, the retrieved context, and the application actions that execute tool results.
+
+- [ ] **Remember the difference between File Search and Code Interpreter**
+  File Search is for retrieval and grounding over knowledge/reference files. Code Interpreter is for computation, analysis, statistics, filtering, aggregation, and chart generation over data files.
+
+- [ ] **Remember that attaching a tool does not guarantee correct tool selection**
+  The model may choose the wrong tool unless instructions clearly direct routing between file retrieval and analysis tasks.
+
+- [ ] **Understand that grounding data and system instructions serve different purposes**
+  Grounding data provides factual/reference content; system instructions define the role, constraints, and output behaviour.
 
 ### Prompt engineering and fine-tuning
 
@@ -126,11 +153,45 @@
 - [ ] **Know the major harm categories: hate, violence, sexual, self-harm**
   Each has configurable severity thresholds (safe, low, medium, high). Requests/responses exceeding the threshold are blocked or flagged.
 
+- [ ] **Understand Safe / Low / Medium / High severity and how thresholds affect blocking**
+  Each harm category returns a severity level. You configure the *threshold* per category — content at or above the threshold is blocked. E.g. set threshold to Medium: Low severity passes, Medium and High are blocked.
+
+- [ ] **Default guardrails vs custom guardrails**
+  Default: Microsoft's preset thresholds applied automatically to every deployment. Custom: you configure per-category thresholds, add blocklists, and enable optional detectors in the Foundry portal.
+
+- [ ] **Prompt Shields — jailbreak and prompt-injection protection**
+  Detects attempts to override the system prompt (jailbreak) or inject malicious instructions hidden in user-supplied or retrieved content (indirect injection). Applied at input time.
+
+- [ ] **Custom blocklists**
+  Lists of specific terms or phrases that are always blocked regardless of harm category classification. Useful for brand-specific, legal, or domain-specific content that standard filters don't cover.
+
+- [ ] **Protected material detection — text and code**
+  Detects output that reproduces copyrighted text or licensed code verbatim. Can be enabled per deployment. Flags or blocks responses containing protected material.
+
+- [ ] **Input filtering vs output filtering**
+  Input filtering: checks the user's prompt before it reaches the model. Output filtering: checks the model's response before it is returned to the app. Both can be active simultaneously.
+
+- [ ] **Guardrail intervention points**
+  - *User input*: filter applied before the prompt reaches the model.
+  - *Model output*: filter applied before the response reaches the app.
+  - *Tool calls (agents)*: filter checks tool call arguments before execution.
+  - *Tool responses (agents)*: filter checks data returned from tools before the model sees it.
+
+- [ ] **Testing and refining guardrails**
+  Use the Foundry portal to run test inputs, review filter decisions, and adjust thresholds. Iterate until the balance between safety and usefulness is acceptable.
+
 - [ ] **Explain system prompt vs platform content filter**
   System prompt: guides the model's behaviour — can be overridden by jailbreak attempts. Content filter: enforced by the platform before/after the model — not bypassable via prompts.
 
 - [ ] **Understand that model refusal and platform filtering are separate safety layers**
   The model may refuse based on training (RLHF). The platform filter is a separate layer that can block even if the model would comply. Both can be active simultaneously.
+
+> **Mental model:**
+> - **System prompt** = tells the model how to behave
+> - **Guardrail** = platform checks whether content is allowed
+> - **Prompt Shield** = detects attempts to manipulate/inject instructions
+> - **Blocklist** = explicitly blocks configured terms
+> - **Content filter** = classifies risky content and applies thresholds
 
 ### Practical architecture questions
 
@@ -145,6 +206,15 @@
 
 - [ ] **Can I explain what parts of my implementation were OpenAI Platform vs Azure/Foundry?**
   OpenAI Platform: model calls, vector stores, `file_search`, `web_search`, streaming. Azure/Foundry: not tested directly due to quota limitations — see comparison documents.
+
+- [ ] **Understand `DefaultAzureCredential` and developer credentials**
+  `DefaultAzureCredential` can use developer credentials such as Azure CLI credentials for local development. This is standard Azure identity flow and differs from API-key based auth.
+
+- [ ] **Know the difference between authentication failure and SDK/API failure**
+  A tenant policy that blocks `az login` or device-code auth is an authentication or environment policy issue, not a failure of the Azure SDK or the model API itself.
+
+- [ ] **Know the difference between persistent agent configuration and per-call tool attachments**
+  Agent configuration persists the tool set and instructions in the agent definition, while per-call tool attachments in `client.responses.create()` are temporary for that specific request.
 
 ---
 
@@ -208,6 +278,10 @@
 | **Fine-tuning** | Adjust model behaviour or style using labelled training examples |
 | **Prompt engineering** | Control model behaviour through instructions and context alone |
 | **Function calling** | Model requests a function; the application executes it and returns the result |
+| **Function schema** | Declares what the model may request; it is not the implementation that executes the action |
+| **`function_call_output`** | Application-wrapped result returned to the model, linked by the original `call_id` |
+| **`previous_response_id`** | Continues a response after application-side tool execution |
+| **Multi-step tools** | Process every returned function call; the model may chain several tools before its final answer |
 | **Vector search** | Similarity-based retrieval — finds chunks semantically close to the query |
 | **Grounding** | Supplying relevant source material reduces unsupported or hallucinated answers |
 | **Guardrails / content filters** | Platform safety controls enforced independently of prompts — not bypassed by instructions |

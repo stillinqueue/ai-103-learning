@@ -11,7 +11,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | Learning Path | Progress | Status |
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
-| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 0 / 9 modules | ⬜ Next |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 2 / 9 modules (custom-tools exercise complete) | 🟡 In progress |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
@@ -37,10 +37,22 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 0 / 9 modules**
+**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 2 / 9 modules (custom-tools exercise complete)**
 
-This is the next area I will continue working on in this repository. Implementations will be added
-under `implementations/agents/` as modules are completed.
+This is the current area of active work. The completed exercises are located under `implementations/agents/`. Additional modules will be added as the learning path progresses.
+
+### Completed exercise
+
+- `teams-notifications` agent exercise: completed
+  - Foundry/agent configuration with `gpt-5-mini`
+  - File Search grounding over `notification-policy.txt`
+  - Code Interpreter over `system_performance.csv`
+  - JSON notification schema with strict policy grounding
+- `astronomy-custom-tools` custom-function exercise: completed
+  - Official Foundry reference in `agent.py`
+  - Codespaces/OpenAI implementation in `openai-agent.py`
+  - Custom tools for event lookup, observation cost, and report generation
+  - Application-side Python execution with iterative `function_call_output` handling
 
 ---
 
