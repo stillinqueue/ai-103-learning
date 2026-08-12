@@ -1,30 +1,27 @@
-Teams Notification Policy
-
-Urgency rules:
+Urgency Classification Policy
 
 Critical:
-- Complete service outage
-- Security incident affecting active systems
-- Major business process unavailable
+- A complete outage of a business-critical service affecting all or nearly all users.
+- A confirmed active security incident with significant impact.
+- A critical business process is completely unavailable across the organization.
 
 High:
-- Important service degraded
-- Significant user impact
-- Business process partially unavailable
+- A service outage or degradation affecting a significant group of users.
+- An important business process is unavailable for some users or teams.
+- Users are unable to complete an important task, but there is no evidence of organization-wide impact.
 
 Medium:
-- Limited user impact
-- Workaround available
-- Non-critical service degradation
+- Limited user impact.
+- A workaround is available.
+- A non-critical service is degraded.
 
 Low:
-- Informational update
-- Planned maintenance
-- No immediate user impact
+- Informational update.
+- Planned maintenance.
+- No immediate user impact.
 
-Notification rules:
-- Never invent a cause.
-- Never invent a resolution.
-- Never invent an ETA.
-- Only recommend an action if the source explicitly provides one.
-- If no next action is supplied, use "Await further information."
+Classification rules:
+- Use only evidence explicitly provided in the incident information.
+- Do not assume organization-wide impact.
+- Do not classify an incident as Critical unless the provided information explicitly supports a Critical condition.
+- If scope is unclear, choose the lower applicable severity.
