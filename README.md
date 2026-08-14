@@ -2,7 +2,7 @@
 
 Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on Azure**.
 
-> **Current milestone: Learning Path 1 completed. Next: Develop AI agents on Azure.**
+> **Current milestone: Develop generative AI apps in Azure and Develop AI agents on Azure completed. Next: Develop natural language solutions in Azure.**
 
 ---
 
@@ -11,7 +11,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | Learning Path | Progress | Status |
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
-| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 7 / 9 modules (A2A exercise complete) | 🟡 In progress |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
@@ -37,9 +37,9 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 7 / 9 modules (Agent Framework exercise complete)**
+**[Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) — 0 / 7 modules**
 
-This is the current area of active work. The completed exercises are located under `implementations/agents/`. Additional modules will be added as the learning path progresses.
+This is the current area of active work. The completed AI agent exercises are located under `implementations/agents/`. Additional modules will be added as the learning path progresses.
 
 ### Completed exercise
 
