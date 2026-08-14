@@ -11,7 +11,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | Learning Path | Progress | Status |
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
-| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 4 / 9 modules (Foundry IQ approval exercise complete) | 🟡 In progress |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 5 / 9 modules (Teams and M365 integration exercise complete) | 🟡 In progress |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
@@ -37,7 +37,7 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 4 / 9 modules (Foundry IQ approval exercise complete)**
+**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 5 / 9 modules (Teams and M365 integration exercise complete)**
 
 This is the current area of active work. The completed exercises are located under `implementations/agents/`. Additional modules will be added as the learning path progresses.
 
@@ -61,6 +61,11 @@ This is the current area of active work. The completed exercises are located und
   - Official Foundry client using `AIProjectClient` and `DefaultAzureCredential`
   - Foundry IQ approval handling with `mcp_approval_request` and `mcp_approval_response`
   - Codespaces/OpenAI approximation with explicit approval before local knowledge lookup
+- `m365-teams-integration` exercise: completed
+  - Local enterprise knowledge agent using OpenAI File Search
+  - Verified grounding over IT security and remote-work policies
+  - Official Teams and optional Microsoft 365 Copilot publishing flow documented
+  - Azure/M365 publishing was not executed in the current environment
 
 ---
 

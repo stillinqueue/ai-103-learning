@@ -103,6 +103,18 @@
 - [ ] **Separate grounding from approval**
   Grounding determines which external knowledge source supports an answer. Approval determines whether the application is permitted to access that source for the current request.
 
+- [ ] **Separate grounding from deployment**
+  Grounding supplies knowledge to the agent; deployment determines where users can access the agent. An agent can work correctly in a development or playground environment before it is published to a channel.
+
+- [ ] **Understand Teams as a channel target**
+  Microsoft Teams is a deployment and user-access channel, not the grounding mechanism. File Search or another knowledge integration provides grounding independently of Teams.
+
+- [ ] **Recognize deployment governance concerns**
+  Publishing to Teams or Microsoft 365 Copilot introduces identity, permissions, tenant policy, and administrator approval requirements. Organization-wide publishing can require admin approval.
+
+- [ ] **Know Microsoft 365 Copilot licensing implications**
+  Microsoft 365 Copilot integration may require an appropriate Copilot license in addition to the Azure and Microsoft 365 configuration.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
