@@ -36,7 +36,7 @@ The application must process every returned function call, not only the first. A
 - `next_visible_event` succeeded for North America and returned the Perseids Meteor Shower.
 - `calculate_observation_cost` returned `$125.00` for a standard telescope, 2 hours, and normal priority.
 - The report request successfully chained all three functions.
-- The generated report file was `report_perseids_meteor_shower_2026-08-12_1300.txt`.
+- The verified run generated `report_perseids_meteor_shower_2026-08-12_1300.txt`; generated astronomy reports are runtime artifacts and are not tracked.
 
 The current OpenAI client logs tool names, such as `Tool called: next_visible_event`, but does not log raw JSON arguments or raw function outputs. Any detailed JSON arguments or output values recorded from these tests are reconstructed from the successful execution and final response, not copied verbatim from runtime logs.
 
