@@ -11,7 +11,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | Learning Path | Progress | Status |
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
-| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 6 / 9 modules (Foundry workflow exercise complete) | 🟡 In progress |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 7 / 9 modules (Agent Framework exercises complete) | 🟡 In progress |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
@@ -37,7 +37,7 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 6 / 9 modules (Foundry workflow exercise complete)**
+**[Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) — 7 / 9 modules (Agent Framework exercise complete)**
 
 This is the current area of active work. The completed exercises are located under `implementations/agents/`. Additional modules will be added as the learning path progresses.
 
@@ -70,6 +70,15 @@ This is the current area of active work. The completed exercises are located und
   - Set-variable, For-each, triage, confidence, category, resolution, and output stages
   - Local OpenAI workflow with separate Triage and Resolution model calls
   - Verified independent processing of all three support tickets
+- `agent-framework` exercise: completed
+  - Official Microsoft Agent Framework reference using `FoundryChatClient` and `Agent`
+  - Local OpenAI Responses API workaround with the same expense data and `submit_claim` behavior
+  - Verified multi-turn expense-claim context and total calculation
+- `agent-framework-multi-agents` exercise: completed
+  - Official Microsoft Agent Framework reference using `FoundryChatClient`, `AzureCliCredential`, and `SequentialBuilder`
+  - Summarizer, Classifier, and Recommended Action agents run in defined participant order
+  - `output_from="all"` collects intermediate and final workflow outputs
+  - Local OpenAI Responses API workaround verified with exactly three sequential model calls
 
 ---
 

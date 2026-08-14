@@ -139,6 +139,47 @@
 - [ ] **Combine deterministic orchestration with probabilistic model output**
   The workflow loop and conditions are deterministic application logic, while classification and drafting are probabilistic model operations.
 
+- [ ] **Understand Microsoft Agent Framework's role**
+  Microsoft Agent Framework is an application framework and abstraction layer for building and orchestrating agents, including instructions, tools, lifecycle, and conversation execution.
+
+- [ ] **Separate the framework from the model provider**
+  Microsoft Agent Framework and the model provider are separate concerns. A framework implementation can use a provider-specific backend such as Azure Foundry through `FoundryChatClient`.
+
+- [ ] **Understand Foundry's role in the Agent Framework lab**
+  Microsoft Foundry provides the hosted Azure model and agent backend, endpoint, deployment, and authentication context used by the Agent Framework client.
+
+- [ ] **Know what the agent abstraction can manage**
+  An agent abstraction can manage conversation/state, tool orchestration, instructions, and execution while the application supplies the provider client and local tools.
+
+- [ ] **Do not equate similar behavior with the same framework**
+  A local OpenAI Responses API implementation can reproduce expense processing and tool-calling behavior, but it is not equivalent to Microsoft Agent Framework.
+
+### Multi-agent orchestration
+
+- [x] **Understand a multi-agent system**
+  Multiple specialized agents work together, with each agent focused on a narrower responsibility.
+
+- [x] **Understand orchestration**
+  Orchestration determines how agents interact, including their execution order and how outputs move between them.
+
+- [x] **Understand sequential orchestration**
+  Sequential orchestration passes work through agents in a defined order. In the exercise, the flow is `Summarizer -> Classifier -> Recommended Action`.
+
+- [x] **Understand `participants` ordering**
+  `participants=[summarizer_agent, classifier_agent, action_agent]` determines the sequence in which agents execute.
+
+- [x] **Understand intermediate output flow**
+  Later agents can consume earlier-agent outputs. The Classifier receives the summary, and Recommended Action receives the summary and classification.
+
+- [x] **Understand `output_from="all"`**
+  `output_from="all"` exposes intermediate outputs as well as the final output, allowing the application to collect and display every participant result.
+
+- [x] **Understand specialization**
+  Specialization can reduce the complexity of each individual agent's responsibility and make the overall workflow easier to reason about.
+
+- [x] **Separate orchestration from the model/provider**
+  The orchestration strategy and the model or provider are separate concerns. Microsoft Agent Framework can orchestrate agents backed by Azure Foundry, while a Python chain of OpenAI model calls can reproduce similar behavior without being Microsoft Agent Framework.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
