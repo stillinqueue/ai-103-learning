@@ -115,6 +115,30 @@
 - [ ] **Know Microsoft 365 Copilot licensing implications**
   Microsoft 365 Copilot integration may require an appropriate Copilot license in addition to the Azure and Microsoft 365 configuration.
 
+- [ ] **Understand workflow orchestration vs a single agent call**
+  A workflow coordinates variables, loops, model steps, conditions, and outputs. It is a control-flow design around agent calls, not just one model request.
+
+- [ ] **Know that workflow variables hold state**
+  Set-variable nodes initialize values, and later nodes read those values as workflow state.
+
+- [ ] **Understand `For each` collection processing**
+  A `For each` node processes a collection item by item, applying the same downstream workflow logic independently to each item.
+
+- [ ] **Use structured output for reliable branching**
+  Structured JSON makes fields such as category and confidence predictable for downstream conditions.
+
+- [ ] **Understand condition nodes route execution**
+  If/Else conditions use model output to select the next workflow branch, such as low confidence, Billing escalation, or automated resolution.
+
+- [ ] **Recognize separate responsibilities for separate agents**
+  A Triage Agent can classify and score an issue while a Resolution-Agent drafts the customer response. Different steps can have different instructions and responsibilities.
+
+- [ ] **Remember that a branch can prevent later agent calls**
+  A Billing branch can terminate or escalate a ticket without invoking the Resolution-Agent. Deterministic workflow logic controls whether later probabilistic model steps run.
+
+- [ ] **Combine deterministic orchestration with probabilistic model output**
+  The workflow loop and conditions are deterministic application logic, while classification and drafting are probabilistic model operations.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
