@@ -76,6 +76,21 @@
 - [ ] **Remember that tools are developer-exposed capabilities**
   The model can request only the tools supplied by the application. It cannot call arbitrary local Python functions or execute local code by itself.
 
+- [ ] **Understand custom function tools vs MCP tools**
+  Custom function tools are application-defined direct function integrations. MCP is a standardized protocol boundary for discovering and invoking external tools through an MCP server and client.
+
+- [ ] **Know the MCP discovery and invocation methods**
+  `list_tools()` discovers the tools available from an MCP server. `call_tool(...)` invokes one of those discovered tools with arguments.
+
+- [ ] **Understand stdio as an MCP transport**
+  Stdio is one MCP transport pattern: the client launches or connects to a server process over standard input and output.
+
+- [ ] **Do not confuse tool discovery with tool execution**
+  `list_tools()` returns tool definitions only. The application must explicitly execute a selected tool through `call_tool(...)` and return the result to the model.
+
+- [ ] **Remember the application owns MCP execution**
+  The model requests a discovered tool and arguments, but the application remains responsible for executing the MCP call and returning the result. The model never directly runs the MCP server's Python code.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
@@ -282,6 +297,10 @@
 | **`function_call_output`** | Application-wrapped result returned to the model, linked by the original `call_id` |
 | **`previous_response_id`** | Continues a response after application-side tool execution |
 | **Multi-step tools** | Process every returned function call; the model may chain several tools before its final answer |
+| **MCP server** | Exposes standardized, discoverable tools across a protocol boundary |
+| **MCP client session** | Initializes the connection, calls `list_tools()`, and invokes tools with `call_tool(...)` |
+| **MCP stdio** | A local transport pattern where the client communicates with a server process over standard input/output |
+| **Tool discovery** | Makes tool definitions available; it does not automatically execute a tool |
 | **Vector search** | Similarity-based retrieval — finds chunks semantically close to the query |
 | **Grounding** | Supplying relevant source material reduces unsupported or hallucinated answers |
 | **Guardrails / content filters** | Platform safety controls enforced independently of prompts — not bypassed by instructions |
