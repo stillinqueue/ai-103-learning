@@ -91,6 +91,18 @@
 - [ ] **Remember the application owns MCP execution**
   The model requests a discovered tool and arguments, but the application remains responsible for executing the MCP call and returning the result. The model never directly runs the MCP server's Python code.
 
+- [ ] **Distinguish a tool request from tool execution**
+  A model `function_call` or `mcp_approval_request` expresses intent; it does not execute the application action. The application controls whether and when the tool runs.
+
+- [ ] **Understand approval as a control point**
+  `mcp_approval_request` asks the application or user for permission. `mcp_approval_response` returns an approve or deny decision before the external knowledge/tool action continues.
+
+- [ ] **Know the effect of denial**
+  Denial can prevent grounding or tool execution, while the model may still produce an answer from its general model knowledge. That answer should not be treated as grounded in the denied source.
+
+- [ ] **Separate grounding from approval**
+  Grounding determines which external knowledge source supports an answer. Approval determines whether the application is permitted to access that source for the current request.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
@@ -109,6 +121,9 @@
 
 - [ ] **Understand `file_search`**
   Built-in Responses API tool. Attach a vector store; the model retrieves relevant document chunks automatically as part of response generation.
+
+- [ ] **Distinguish Foundry IQ from generic File Search**
+  Foundry IQ integrates an Azure knowledge base, connected Azure resources, and Foundry agent configuration. It is a specific Azure knowledge integration and is not interchangeable with a generic File Search vector-store tool.
 
 - [ ] **Understand `web_search`**
   Built-in Responses API tool. The model issues a live search and incorporates current web results into its response.
