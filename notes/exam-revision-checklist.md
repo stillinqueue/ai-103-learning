@@ -180,6 +180,36 @@
 - [x] **Separate orchestration from the model/provider**
   The orchestration strategy and the model or provider are separate concerns. Microsoft Agent Framework can orchestrate agents backed by Azure Foundry, while a Python chain of OpenAI model calls can reproduce similar behavior without being Microsoft Agent Framework.
 
+### A2A remote agents
+
+- [x] **Understand A2A**
+  A2A is an agent-to-agent communication protocol. It connects agents to other agents through a protocol boundary.
+
+- [x] **Distinguish A2A from MCP**
+  MCP primarily connects agents or applications to tools and resources. A2A connects one agent to another agent with its own logic and runtime.
+
+- [x] **Understand remote-agent ownership**
+  A remote agent owns its implementation, model call, and runtime. The host should communicate with it through the protocol boundary rather than directly executing its Python implementation.
+
+- [x] **Understand HTTP as an A2A transport boundary**
+  HTTP endpoints can expose agent metadata, accept A2A messages, and return task responses while keeping the host and remote agents separate.
+
+- [x] **Understand A2A agent discovery**
+  The host can resolve remote agent cards to learn an agent's name, description, endpoint, capabilities, skills, and supported message modes before sending work.
+
+- [x] **Understand remote-agent context flow**
+  The output from one remote agent can become context for another remote agent. In the exercise, the Title result is included in the Outline request.
+
+- [x] **Separate orchestration from A2A transport**
+  Multi-agent orchestration describes which agents perform which steps and in what order. A2A describes the protocol and transport boundary used to communicate with a remote agent.
+
+- [x] **Compare function calling, MCP, and A2A**
+  `Function calling -> app calls local function`
+
+  `MCP -> app/agent calls external tool through MCP`
+
+  `A2A -> agent communicates with another agent`
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

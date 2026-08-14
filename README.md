@@ -11,7 +11,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | Learning Path | Progress | Status |
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
-| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 7 / 9 modules (Agent Framework exercises complete) | 🟡 In progress |
+| [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 7 / 9 modules (A2A exercise complete) | 🟡 In progress |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 0 / 7 modules | ⬜ Not started |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
@@ -79,6 +79,10 @@ This is the current area of active work. The completed exercises are located und
   - Summarizer, Classifier, and Recommended Action agents run in defined participant order
   - `output_from="all"` collects intermediate and final workflow outputs
   - Local OpenAI Responses API workaround verified with exactly three sequential model calls
+- `a2a-remote-agents` exercise: completed
+  - Official Foundry/A2A reference with a host/routing agent and remote Title and Outline agents
+  - A2A agent-card discovery and HTTP-based agent-to-agent task communication
+  - Local OpenAI workaround verified with separate HTTP Title and Outline agents and host-side A2A-compatible requests
 
 ---
 
