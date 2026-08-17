@@ -452,6 +452,26 @@
 - [x] **Separate structural and runtime verification**
   Structural SDK verification does not prove real analyzer creation or business-card extraction succeeded.
 
+### Document Intelligence
+
+- [x] **Understand the client and authentication**
+  `DocumentIntelligenceClient` uses `AzureKeyCredential` in this lab, unlike earlier Entra-based examples.
+
+- [x] **Understand analysis flow**
+  `begin_analyze_document(...) -> poller -> .result()` submits a document and waits for the long-running operation to complete.
+
+- [x] **Distinguish model types**
+  Read provides OCR/general text extraction; a prebuilt model such as `prebuilt-invoice` provides a ready-made schema; a custom model is trained/configured in Studio for organization-specific extraction.
+
+- [x] **Remember invoice fields**
+  The prebuilt invoice example extracts `VendorName`, `CustomerName`, and `InvoiceTotal`, including confidence values.
+
+- [x] **Remember custom model requirements**
+  Custom model training requires Blob Storage, Studio, and a model ID. Document Intelligence is specialized for document extraction, while Content Understanding is a broader multimodal/schema analyzer workflow.
+
+- [x] **Separate structural and runtime verification**
+  Structural SDK verification does not prove real Azure execution or custom-model training succeeded.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

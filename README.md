@@ -13,7 +13,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
 | [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 7 / 7 modules | ✅ Completed |
-| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 6 / 8 modules | 🟡 In progress |
+| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 7 / 8 modules | 🟡 In progress |
 
 ---
 
@@ -93,6 +93,10 @@ This is the current area of active work. The completed AI agent exercises are lo
   - Python SDK creates and consumes a business-card analyzer with `AzureKeyCredential`
   - `Description`/business-card field extraction and long-running poller patterns documented
   - No real analyzer creation or card extraction because Azure credentials/configuration are unavailable
+- `document-intelligence`: completed
+  - Prebuilt invoice analysis and custom-model test clients using `DocumentIntelligenceClient`
+  - Read/prebuilt/custom model distinctions and AzureKeyCredential configuration documented
+  - No Azure invoice analysis or custom-model runtime/training was executed
 
 ### Completed exercise
 
