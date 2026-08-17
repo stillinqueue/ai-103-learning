@@ -432,6 +432,26 @@
 - [x] **Separate Studio design from SDK programming**
   This exercise is Studio/analyzer design. The next Microsoft exercise is programmatic Content Understanding client/API usage; these concepts should not be mixed.
 
+### Content Understanding API client
+
+- [x] **Distinguish the exercises**
+  Exercise 01 designs an analyzer/schema in Studio; Exercise 02 creates and uses an analyzer programmatically with the Python SDK.
+
+- [x] **Understand the SDK client pattern**
+  `ContentUnderstandingClient` uses `AzureKeyCredential` in this lab. This key-auth pattern differs from earlier `DefaultAzureCredential` Content Understanding examples.
+
+- [x] **Understand analyzer creation**
+  `begin_create_analyzer(...) -> poller -> .result()` creates or replaces an analyzer as a long-running Azure operation.
+
+- [x] **Understand analyzer consumption**
+  `begin_analyze_binary(...) -> poller -> .result()` submits business-card bytes to an analyzer and waits for structured results.
+
+- [x] **Remember the business-card schema**
+  The schema fields are `Company`, `Name`, `Title`, `Email`, and `Phone`. An analyzer schema is a reusable structured-output contract.
+
+- [x] **Separate structural and runtime verification**
+  Structural SDK verification does not prove real analyzer creation or business-card extraction succeeded.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
