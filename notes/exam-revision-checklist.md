@@ -352,6 +352,23 @@
 - [x] **Keep the vision mental model**
   Multimodal means multiple input modalities in one model interaction. Generative multimodal image understanding is distinct from specialized computer-vision SDK analysis. URL and base64 images are transport methods, not different vision capabilities. A CLI loop is not conversation memory; independent `responses.create(...)` calls remain stateless unless history or conversation state is supplied. Local OpenAI success is not Azure runtime verification, and payload validation is not successful Azure service execution.
 
+### Image generation
+
+- [x] **Understand the image generation API**
+  `client.images.generate(...)` accepts the model or deployment, a text prompt, and `n=1`, then returns generated image data.
+
+- [x] **Understand base64 response handling**
+  Generated image data may be returned as `b64_json`. Base64 text is an encoding/transport representation, not the image itself; decode it with `base64.b64decode(...)` before writing the resulting bytes to a `.png` file.
+
+- [x] **Understand Azure image authentication and endpoint**
+  `DefaultAzureCredential` with `get_bearer_token_provider` supplies Entra authentication for the Azure OpenAI client. The endpoint is `https://<resource>.openai.azure.com/openai/v1/`, and `MODEL_DEPLOYMENT` identifies the Azure image-model deployment.
+
+- [x] **Keep the generation mental model**
+  Module 1 analyzes an existing image; Module 2 generates a new image from a prompt. Image generation is not image understanding: `text prompt -> image model -> image bytes`, then `b64_json -> base64 decode -> PNG bytes`. A CLI loop does not automatically preserve image-generation history or context. Local OpenAI generation success is not Azure runtime verification, and structural SDK validation is not successful Azure service execution.
+
+- [x] **Remember the model boundary**
+  The Microsoft exercise recommends `gpt-image-2`, and local OpenAI practice also succeeded with `gpt-image-2`; Azure deployment availability and quota may differ from direct OpenAI availability.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
