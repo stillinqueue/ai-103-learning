@@ -1,0 +1,14 @@
+{
+  "reference_only": true,
+  "note": "Learning reference for the Microsoft Content Understanding Studio exercise; not an exported or deployed analyzer definition.",
+  "analyzer": "voicemailanalyzer",
+  "training_sample": "call-1.mp3",
+  "test_sample": "call-2.mp3",
+  "fields": {
+    "Caller": {"type": "String", "method": "Generate"},
+    "Summary": {"type": "String", "method": "Generate"},
+    "Actions": {"type": "String", "method": "Generate"},
+    "CallbackNumber": {"type": "String", "method": "Generate"},
+    "AlternativeContacts": {"type": "List of Strings", "method": "Generate"}
+  }
+}

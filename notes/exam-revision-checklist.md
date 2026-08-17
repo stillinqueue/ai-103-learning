@@ -412,6 +412,26 @@
 - [x] **Remember endpoint and configuration**
   The implementation uses `ENDPOINT`, `ANALYZER`, API version `2025-11-01`, and the Foundry resource endpoint `https://<resource>.services.ai.azure.com`. This is distinct from Azure OpenAI `/openai/v1/` and Foundry project `/api/projects/...` endpoints.
 
+### Multimodal Content Understanding Studio
+
+- [x] **Understand the analyzer lifecycle**
+  Choose representative sample content, define the desired schema, build the analyzer, test it on different content, and reuse it for structured extraction: `sample content -> schema -> analyzer -> test content -> structured fields`. This is schema design and analyzer testing, not ordinary ML training.
+
+- [x] **Distinguish prebuilt analyzers**
+  Read provides general text-oriented extraction such as words, paragraphs, formulas, and barcodes. Layout adds document structure such as tables, figures, structural elements, hyperlinks, and annotations where supported.
+
+- [x] **Understand custom analyzers**
+  A custom analyzer is designed around business-specific fields; its schema defines the output contract and is reusable across similar content. A custom analyzer is not generic OCR.
+
+- [x] **Understand the four modalities**
+  Documents can provide invoice fields including custom `TotalQuantity`; images can extract slide `Title`, `Summary`, `Charts`, `QuarterlyRevenue`, and `ProductCategories`; audio can extract voicemail `Caller`, `Summary`, `Actions`, `CallbackNumber`, and `AlternativeContacts`; video can extract meeting `Summary`, `Participants`, `ParticipantNames`, `SharedSlides`, and `AssignedActions` using transcript/audio plus visual information. Transcription is not full information extraction.
+
+- [x] **Keep the Content Understanding mental model**
+  Unstructured content becomes structured business data: schema is the desired output contract and analyzer is the reusable extractor. Read/Layout are general extraction; custom analyzers are business-specific. OCR and transcription are not full Content Understanding, multimodal includes documents/images/audio/video, sample content differs from test content, and configured analyzer is not necessarily executed.
+
+- [x] **Separate Studio design from SDK programming**
+  This exercise is Studio/analyzer design. The next Microsoft exercise is programmatic Content Understanding client/API usage; these concepts should not be mixed.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

@@ -1,0 +1,28 @@
+{
+  "reference_only": true,
+  "note": "Learning reference for the Microsoft Content Understanding Studio exercise; not an exported or deployed analyzer definition.",
+  "analyzer": "slideanalyzer",
+  "training_sample": "slide-1.jpg",
+  "test_sample": "slide-2.jpg",
+  "fields": {
+    "Title": {"type": "String", "method": "Generate"},
+    "Summary": {"type": "String", "method": "Generate"},
+    "Charts": {"type": "Integer", "method": "Generate"},
+    "QuarterlyRevenue": {
+      "type": "List of Objects",
+      "method": "Generate",
+      "fields": {
+        "Quarter": {"type": "String"},
+        "Revenue": {"type": "Number"}
+      }
+    },
+    "ProductCategories": {
+      "type": "List of Objects",
+      "method": "Generate",
+      "fields": {
+        "ProductCategory": {"type": "String"},
+        "RevenuePercentage": {"type": "Number"}
+      }
+    }
+  }
+}

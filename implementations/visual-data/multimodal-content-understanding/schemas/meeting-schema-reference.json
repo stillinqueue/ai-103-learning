@@ -1,0 +1,21 @@
+{
+  "reference_only": true,
+  "note": "Learning reference for the Microsoft Content Understanding Studio exercise; not an exported or deployed analyzer definition.",
+  "analyzer": "meetinganalyzer",
+  "training_sample": "meeting-1.mp4",
+  "test_sample": "meeting-2.mp4",
+  "fields": {
+    "Summary": {"type": "String", "method": "Generate"},
+    "Participants": {"type": "Integer", "method": "Generate"},
+    "ParticipantNames": {"type": "List of Strings", "method": "Generate"},
+    "SharedSlides": {"type": "List of Strings", "method": "Generate"},
+    "AssignedActions": {
+      "type": "List of Objects",
+      "method": "Generate",
+      "fields": {
+        "Task": {"type": "String"},
+        "AssignedTo": {"type": "String"}
+      }
+    }
+  }
+}

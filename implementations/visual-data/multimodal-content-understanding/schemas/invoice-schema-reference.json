@@ -1,0 +1,16 @@
+{
+  "reference_only": true,
+  "note": "Learning reference for the Microsoft Content Understanding Studio exercise; not an exported or deployed analyzer definition.",
+  "analyzer": "invoiceanalyzer",
+  "template": "Invoice",
+  "training_sample": "invoice-1234.pdf",
+  "test_sample": "invoice-1235.pdf",
+  "custom_fields": {
+    "TotalQuantity": {
+      "description": "Total number of items on the invoice",
+      "type": "String",
+      "method": "Auto"
+    }
+  },
+  "template_fields": "The Invoice template supplies standard invoice fields such as VendorName, InvoiceDate, Items, and totals; this reference does not enumerate every template field."
+}

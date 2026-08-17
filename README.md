@@ -13,7 +13,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
 | [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 7 / 7 modules | ✅ Completed |
-| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 4 / 8 modules | 🟡 In progress |
+| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 5 / 8 modules | 🟡 In progress |
 
 ---
 
@@ -85,6 +85,10 @@ This is the current area of active work. The completed AI agent exercises are lo
 - `content-understanding`: completed
   - Azure Content Understanding analyzer client with async image analysis and custom `Description`/`Tags` field extraction
   - Structural SDK/schema verification completed; no Azure analyzer runtime request was executed
+- `multimodal-content-understanding`: completed
+  - Studio/analyzer-design reference with eight official multimodal sample files
+  - Four schema references for invoice, slide, voicemail, and meeting analyzers
+  - No analyzer runtime because Azure resource and authentication setup is unavailable
 
 ### Completed exercise
 
