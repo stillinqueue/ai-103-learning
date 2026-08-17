@@ -156,54 +156,54 @@
 
 ### Multi-agent orchestration
 
-- [x] **Understand a multi-agent system**
+- [ ] **Understand a multi-agent system**
   Multiple specialized agents work together, with each agent focused on a narrower responsibility.
 
-- [x] **Understand orchestration**
+- [ ] **Understand orchestration**
   Orchestration determines how agents interact, including their execution order and how outputs move between them.
 
-- [x] **Understand sequential orchestration**
+- [ ] **Understand sequential orchestration**
   Sequential orchestration passes work through agents in a defined order. In the exercise, the flow is `Summarizer -> Classifier -> Recommended Action`.
 
-- [x] **Understand `participants` ordering**
+- [ ] **Understand `participants` ordering**
   `participants=[summarizer_agent, classifier_agent, action_agent]` determines the sequence in which agents execute.
 
-- [x] **Understand intermediate output flow**
+- [ ] **Understand intermediate output flow**
   Later agents can consume earlier-agent outputs. The Classifier receives the summary, and Recommended Action receives the summary and classification.
 
-- [x] **Understand `output_from="all"`**
+- [ ] **Understand `output_from="all"`**
   `output_from="all"` exposes intermediate outputs as well as the final output, allowing the application to collect and display every participant result.
 
-- [x] **Understand specialization**
+- [ ] **Understand specialization**
   Specialization can reduce the complexity of each individual agent's responsibility and make the overall workflow easier to reason about.
 
-- [x] **Separate orchestration from the model/provider**
+- [ ] **Separate orchestration from the model/provider**
   The orchestration strategy and the model or provider are separate concerns. Microsoft Agent Framework can orchestrate agents backed by Azure Foundry, while a Python chain of OpenAI model calls can reproduce similar behavior without being Microsoft Agent Framework.
 
 ### A2A remote agents
 
-- [x] **Understand A2A**
+- [ ] **Understand A2A**
   A2A is an agent-to-agent communication protocol. It connects agents to other agents through a protocol boundary.
 
-- [x] **Distinguish A2A from MCP**
+- [ ] **Distinguish A2A from MCP**
   MCP primarily connects agents or applications to tools and resources. A2A connects one agent to another agent with its own logic and runtime.
 
-- [x] **Understand remote-agent ownership**
+- [ ] **Understand remote-agent ownership**
   A remote agent owns its implementation, model call, and runtime. The host should communicate with it through the protocol boundary rather than directly executing its Python implementation.
 
-- [x] **Understand HTTP as an A2A transport boundary**
+- [ ] **Understand HTTP as an A2A transport boundary**
   HTTP endpoints can expose agent metadata, accept A2A messages, and return task responses while keeping the host and remote agents separate.
 
-- [x] **Understand A2A agent discovery**
+- [ ] **Understand A2A agent discovery**
   The host can resolve remote agent cards to learn an agent's name, description, endpoint, capabilities, skills, and supported message modes before sending work.
 
-- [x] **Understand remote-agent context flow**
+- [ ] **Understand remote-agent context flow**
   The output from one remote agent can become context for another remote agent. In the exercise, the Title result is included in the Outline request.
 
-- [x] **Separate orchestration from A2A transport**
+- [ ] **Separate orchestration from A2A transport**
   Multi-agent orchestration describes which agents perform which steps and in what order. A2A describes the protocol and transport boundary used to communicate with a remote agent.
 
-- [x] **Compare function calling, MCP, and A2A**
+- [ ] **Compare function calling, MCP, and A2A**
   `Function calling -> app calls local function`
 
   `MCP -> app/agent calls external tool through MCP`
@@ -212,278 +212,278 @@
 
 ### Azure Language text analysis
 
-- [x] **Understand the Azure Language client pattern**
+- [ ] **Understand the Azure Language client pattern**
   `TextAnalyticsClient` is the service client, authenticated with `DefaultAzureCredential` and configured with the `FOUNDRY_ENDPOINT` service endpoint.
 
-- [x] **Understand language detection**
+- [ ] **Understand language detection**
   `detect_language` returns the detected language and ISO language code. It is useful when downstream processing depends on knowing the text language.
 
-- [x] **Understand Named Entity Recognition**
+- [ ] **Understand Named Entity Recognition**
   `recognize_entities` finds and categorizes entities such as people, organizations, locations, dates, and other concepts. Entity recognition is a specialized NLP operation.
 
-- [x] **Understand PII detection and redaction**
+- [ ] **Understand PII detection and redaction**
   `recognize_pii_entities` identifies personally identifiable information, returns categorized PII entities, and provides redacted text.
 
-- [x] **Keep the Azure Language mental model**
+- [ ] **Keep the Azure Language mental model**
   Azure Language provides specialized NLP service APIs. NER identifies and categorizes real-world entities in text; PII detection identifies sensitive personal information and can redact it. A specialized NLP API is not general-purpose LLM prompting, and a local OpenAI approximation is not Azure Language. Syntax/import verification is not successful Azure service execution.
 
 ### Foundry text analysis agent
 
-- [x] **Understand the Foundry agent client pattern**
+- [ ] **Understand the Foundry agent client pattern**
   `AIProjectClient` uses `DefaultAzureCredential`; `get_openai_client()` provides the Responses API client, and `agent_reference` targets an existing Foundry agent by name.
 
-- [x] **Understand the agent-mediated architecture**
+- [ ] **Understand the agent-mediated architecture**
   `Python client -> Foundry Agent -> Azure Language MCP tool`. The client does not call `TextAnalyticsClient` directly. The agent can choose the appropriate connected language capability based on the prompt, while MCP exposes external tools and capabilities to the agent.
 
-- [x] **Recognize language-agent tasks**
+- [ ] **Recognize language-agent tasks**
   Lab examples include named entity recognition, PII identification and redaction, and sentiment analysis.
 
-- [x] **Keep the direct-versus-agent mental model**
+- [ ] **Keep the direct-versus-agent mental model**
   Direct SDK call is not the same as an agent-mediated tool call. Module 1 is `app -> Azure Language directly`; Module 2 is `app -> Foundry agent -> Azure Language MCP`. `agent_reference` selects the existing Foundry agent, and a local direct OpenAI prompt would not reproduce this Microsoft agent/MCP architecture.
 
-- [x] **Separate structural and runtime verification**
+- [ ] **Separate structural and runtime verification**
   Syntax/import and SDK-surface checks do not prove successful Foundry runtime execution.
 
-- [x] **Remember the SDK version boundary**
+- [ ] **Remember the SDK version boundary**
   The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace had `2.3.0`. The API surface used here remained compatible in this environment; do not generalize that result to every beta or stable SDK version.
 
 ### Speech-capable generative AI
 
-- [x] **Understand the Azure speech-capable client pattern**
+- [ ] **Understand the Azure speech-capable client pattern**
   `AzureOpenAI` uses `DefaultAzureCredential` with `get_bearer_token_provider`; `MODEL_ENDPOINT` selects the Azure endpoint and `MODEL_NAME` selects the deployed speech model.
 
-- [x] **Understand text-to-speech**
+- [ ] **Understand text-to-speech**
   `client.audio.speech.with_streaming_response.create(...)` generates audio from text. The voice can be selected, instructions can influence delivery or style where supported, and the response can be streamed to an audio file.
 
-- [x] **Understand speech-to-text**
+- [ ] **Understand speech-to-text**
   `client.audio.transcriptions.create(...)` accepts an audio file opened in binary mode and returns transcription text from the deployed model.
 
-- [x] **Keep the speech mental model**
+- [ ] **Keep the speech mental model**
   TTS is `text -> audio`; STT/transcription is `audio -> text`. This lab uses speech-capable generative AI models through the OpenAI SDK, not the classic Azure AI Speech SDK/service APIs. `AzureOpenAI` represents an Azure-hosted deployment/client, while local OpenAI practice is direct OpenAI API usage and not Azure runtime verification. Syntax/import verification is not successful Azure model execution.
 
 ### Azure Speech SDK
 
-- [x] **Understand Azure Speech SDK configuration**
+- [ ] **Understand Azure Speech SDK configuration**
   `azure.cognitiveservices.speech` provides `SpeechConfig`, using `DefaultAzureCredential` with the Foundry/Cognitive Services endpoint.
 
-- [x] **Understand speech synthesis**
+- [ ] **Understand speech synthesis**
   `AudioOutputConfig` selects the output file, `SpeechSynthesizer` handles synthesis, and `speak_text_async(...).get()` returns the result. `ResultReason.SynthesizingAudioCompleted` indicates success, and output can be written to `greeting.wav`.
 
-- [x] **Understand speech recognition**
+- [ ] **Understand speech recognition**
   `AudioConfig` supplies an audio file to `SpeechRecognizer`; `recognize_once_async().get()` performs recognition. `ResultReason.RecognizedSpeech` indicates success and recognized text is available through `result.text`.
 
-- [x] **Keep the Azure Speech mental model**
+- [ ] **Keep the Azure Speech mental model**
   Module 3 uses generative speech models through `AzureOpenAI`; Module 4 uses the specialized Azure Speech SDK. TTS is `text -> speech`, STT is `speech -> text`, `SpeechSynthesizer` handles synthesis, and `SpeechRecognizer` handles recognition. Structural SDK validation is not successful Azure Speech runtime execution, and direct OpenAI speech practice is not Azure Speech SDK verification.
 
-- [x] **Understand authentication patterns**
+- [ ] **Understand authentication patterns**
   The Microsoft starter contains `FOUNDRY_KEY`, while the completed Entra pattern uses `DefaultAzureCredential` with `FOUNDRY_ENDPOINT`. Key-based and Entra-based authentication are different patterns; do not mix them without understanding which constructor or API expects each one.
 
 ### Azure Speech MCP agent
 
-- [x] **Understand the Foundry agent client pattern**
+- [ ] **Understand the Foundry agent client pattern**
   `AIProjectClient` uses `DefaultAzureCredential`; `get_openai_client()` provides the Responses API client, and `agent_reference` targets the existing `speech-agent`.
 
-- [x] **Understand the agent/tool architecture**
+- [ ] **Understand the agent/tool architecture**
   `Python client -> Foundry agent -> Azure Speech MCP -> Azure Speech`. The client does not call the Azure Speech SDK directly. MCP exposes speech capabilities as agent tools, and the agent interprets the prompt to invoke the appropriate speech operation.
 
-- [x] **Understand the storage role**
+- [ ] **Understand the storage role**
   Synthesized audio may need persistent storage. The lab uses Azure Blob Storage for generated audio, while SAS/container access belongs to the MCP tool and storage integration, not the Python client's Foundry authentication.
 
-- [x] **Separate authentication relationships**
+- [ ] **Separate authentication relationships**
   Python client to Foundry uses `DefaultAzureCredential`. The Foundry MCP connection to Azure Speech and storage uses the configured connection credentials or SAS mechanism required by the lab.
 
-- [x] **Keep the Module 3/4/5 mental model**
+- [ ] **Keep the Module 3/4/5 mental model**
   Module 3 is `app -> AzureOpenAI speech model`; Module 4 is `app -> Azure Speech SDK directly`; Module 5 is `app -> Foundry agent -> Azure Speech MCP`. A connected MCP tool is not necessarily executed, and a tool request is not tool execution. Agent-mediated speech is distinct from a direct SDK speech call, structural verification is not runtime verification, and Blob Storage may be part of a speech-generation tool workflow.
 
-- [x] **Remember the SDK boundary**
+- [ ] **Remember the SDK boundary**
   The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace has `2.3.0`. The APIs used by this exercise remained compatible here; do not assume all beta and stable versions are interchangeable.
 
 ### Voice Live agent
 
-- [x] **Understand the Voice Live client pattern**
+- [ ] **Understand the Voice Live client pattern**
   `azure.ai.voicelive` provides asynchronous `connect(...)`; `AzureCliCredential` authenticates the client, `AgentConfig` identifies the Foundry project/agent, `RequestSession` configures the session, and server events drive the conversation.
 
-- [x] **Understand real-time audio**
+- [ ] **Understand real-time audio**
   Microphone audio is streamed into an ongoing session and synthesized response audio is streamed back. Voice Activity Detection identifies turns; multilingual semantic VAD helps detect boundaries, noise reduction improves microphone input, echo cancellation avoids treating speaker output as new input, and interruption/barge-in allows the user to interrupt agent speech.
 
-- [x] **Know the important Voice Live APIs**
+- [ ] **Know the important Voice Live APIs**
   `InputAudioFormat`, `OutputAudioFormat`, `Modality`, `ServerEventType`, `AudioNoiseReduction`, `AudioEchoCancellation`, and `AzureSemanticVadMultilingual` configure and process the real-time session.
 
-- [x] **Keep the Module 3-6 mental model**
+- [ ] **Keep the Module 3-6 mental model**
   Module 3 is `app -> AzureOpenAI` speech model; Module 4 is direct Azure Speech SDK; Module 5 is Foundry agent -> Azure Speech MCP; Module 6 is a persistent real-time Voice Live session -> Foundry agent. A streaming voice session is not independent TTS/STT requests; VAD decides conversational turns, echo cancellation is distinct from noise reduction, and structural SDK validation is not a successful real-time audio session.
 
-- [x] **Remember endpoint and agent configuration**
+- [ ] **Remember endpoint and agent configuration**
   Voice Live expects the base Foundry resource endpoint without `/api/projects/...`. Agent names/IDs are case-sensitive, and the official text inconsistently uses `chat-agent` and `Chat-Agent`; the deployed agent value must be used exactly.
 
-- [x] **Remember the runtime boundary**
+- [ ] **Remember the runtime boundary**
   Azure CLI authentication is blocked in this Codespace and `pyaudio`/native microphone-speaker support is unavailable, so no real Voice Live session was runtime-verified.
 
 ### Translation
 
-- [x] **Understand Azure Translator**
+- [ ] **Understand Azure Translator**
   `TextTranslationClient` accepts `InputTextItem` values; `get_supported_languages(scope="translation")` provides valid target codes, and `translate(...)` performs translation with automatic source-language detection and an application-supplied target language.
 
-- [x] **Understand Azure Speech translation**
+- [ ] **Understand Azure Speech translation**
   `SpeechTranslationConfig` configures the service, `TranslationRecognizer` recognizes source speech such as `en-US`, multiple target languages can be added, translated text is returned per target language, and `SpeechSynthesizer` can speak each translated result.
 
-- [x] **Remember the lab voice mapping**
+- [ ] **Remember the lab voice mapping**
   French uses `fr-FR-HenriNeural`, Spanish uses `es-ES-ElviraNeural`, and Hindi uses `hi-IN-MadhurNeural`.
 
-- [x] **Keep the translation mental model**
+- [ ] **Keep the translation mental model**
   Translation is not transcription: transcription is `speech -> text` in the same language, while text translation is `text in language A -> text in language B`. Speech translation can combine recognition, translation, and synthesis. Azure Translator handles text translation; Azure Speech handles speech translation and synthesis here. Structural SDK verification is not successful Azure service execution, and direct LLM translation is not Azure Translator SDK verification.
 
-- [x] **Remember the translation architectures**
+- [ ] **Remember the translation architectures**
   Text is `app -> Azure Translator -> translated text`. Speech is `microphone -> TranslationRecognizer -> translated text -> SpeechSynthesizer -> speaker`. Both use the base Cognitive Services endpoint and `DefaultAzureCredential`; Azure CLI/Entra authentication remains unavailable in this Codespace.
 
 ### Multimodal vision input
 
-- [x] **Understand multimodal input**
+- [ ] **Understand multimodal input**
   One model request can contain both text and image input. `input_text`, `input_image`, and `response.output_text` form the core Responses API pattern.
 
-- [x] **Understand image transport methods**
+- [ ] **Understand image transport methods**
   A remote URL can be supplied directly as image input. A local image can be read as bytes, base64 encoded, and sent as a `data:image/jpeg;base64,...` data URL.
 
-- [x] **Understand the Responses API request**
+- [ ] **Understand the Responses API request**
   `client.responses.create(...)` accepts developer/system instructions and user content combining text and an image in the same request.
 
-- [x] **Understand Azure vision authentication and endpoint**
+- [ ] **Understand Azure vision authentication and endpoint**
   `DefaultAzureCredential` and `get_bearer_token_provider` supply Entra authentication for the Azure OpenAI client. The endpoint is `https://<resource>.openai.azure.com/openai/v1/`, and `MODEL_DEPLOYMENT` identifies the Azure model deployment.
 
-- [x] **Keep the vision mental model**
+- [ ] **Keep the vision mental model**
   Multimodal means multiple input modalities in one model interaction. Generative multimodal image understanding is distinct from specialized computer-vision SDK analysis. URL and base64 images are transport methods, not different vision capabilities. A CLI loop is not conversation memory; independent `responses.create(...)` calls remain stateless unless history or conversation state is supplied. Local OpenAI success is not Azure runtime verification, and payload validation is not successful Azure service execution.
 
 ### Image generation
 
-- [x] **Understand the image generation API**
+- [ ] **Understand the image generation API**
   `client.images.generate(...)` accepts the model or deployment, a text prompt, and `n=1`, then returns generated image data.
 
-- [x] **Understand base64 response handling**
+- [ ] **Understand base64 response handling**
   Generated image data may be returned as `b64_json`. Base64 text is an encoding/transport representation, not the image itself; decode it with `base64.b64decode(...)` before writing the resulting bytes to a `.png` file.
 
-- [x] **Understand Azure image authentication and endpoint**
+- [ ] **Understand Azure image authentication and endpoint**
   `DefaultAzureCredential` with `get_bearer_token_provider` supplies Entra authentication for the Azure OpenAI client. The endpoint is `https://<resource>.openai.azure.com/openai/v1/`, and `MODEL_DEPLOYMENT` identifies the Azure image-model deployment.
 
-- [x] **Keep the generation mental model**
+- [ ] **Keep the generation mental model**
   Module 1 analyzes an existing image; Module 2 generates a new image from a prompt. Image generation is not image understanding: `text prompt -> image model -> image bytes`, then `b64_json -> base64 decode -> PNG bytes`. A CLI loop does not automatically preserve image-generation history or context. Local OpenAI generation success is not Azure runtime verification, and structural SDK validation is not successful Azure service execution.
 
-- [x] **Remember the model boundary**
+- [ ] **Remember the model boundary**
   The Microsoft exercise recommends `gpt-image-2`, and local OpenAI practice also succeeded with `gpt-image-2`; Azure deployment availability and quota may differ from direct OpenAI availability.
 
 ### Sora video generation
 
-- [x] **Understand the video generation API**
+- [ ] **Understand the video generation API**
   `client.videos.create(...)` returns a video job/object with an ID and status. Generation is asynchronous: creation success does not mean the finished video is ready.
 
-- [x] **Understand polling and terminal states**
+- [ ] **Understand polling and terminal states**
   `client.videos.retrieve(video_id)` polls the job until `completed`, `failed`, or `cancelled`. Failed and cancelled jobs must not be treated as downloadable successes.
 
-- [x] **Understand video download**
+- [ ] **Understand video download**
   `client.videos.download_content(video_id, variant="video")` retrieves completed content, and `write_to_file(...)` can save it as an MP4.
 
-- [x] **Understand remix**
+- [ ] **Understand remix**
   `client.videos.remix(...)` combines an existing generated video with a new prompt and creates a new asynchronous job. The new job must be polled separately; remix is not in-place modification.
 
-- [x] **Understand image-to-video**
+- [ ] **Understand image-to-video**
   `input_reference` supplies a binary-opened reference image that guides generation. Image-to-video is distinct from still-image generation.
 
-- [x] **Keep the video mental model**
+- [ ] **Keep the video mental model**
   Module 1 understands an existing image; Module 2 generates a still image; Module 3 generates or remixes video. Still-image generation may return output directly, while video uses `create -> poll -> terminal status -> download`. Structural API verification is not Azure Sora runtime access, and model availability/quota/access can differ by Azure subscription.
 
-- [x] **Remember Sora configuration**
+- [ ] **Remember Sora configuration**
   The starter uses `OPENAI_BASE_URL`, `MODEL_DEPLOYMENT`, the `https://<resource>.openai.azure.com/openai/v1/` endpoint, and the official `Sora-2` model deployment.
 
 ### Azure Content Understanding
 
-- [x] **Understand the Content Understanding client**
+- [ ] **Understand the Content Understanding client**
   `ContentUnderstandingClient` accepts `AnalysisInput` and returns an `AnalysisResult`; `DefaultAzureCredential` supplies Azure authentication.
 
-- [x] **Understand the analyzer mental model**
+- [ ] **Understand the analyzer mental model**
   An analyzer is created and configured separately. The application references it through `ANALYZER`, and the analyzer defines the structured output schema rather than the request redefining it each time.
 
-- [x] **Understand long-running analysis**
+- [ ] **Understand long-running analysis**
   `begin_analyze(...)` returns a poller, and `.result()` waits for and retrieves the completed operation. Azure methods prefixed with `begin_` commonly represent long-running operations.
 
-- [x] **Understand structured fields**
+- [ ] **Understand structured fields**
   The lab schema contains `Description` as a String and `Tags` as a List of Strings. Extract string fields with `value_string`; iterate arrays with `value_array`, whose elements expose their own `value_string`.
 
-- [x] **Keep the Content Understanding mental model**
+- [ ] **Keep the Content Understanding mental model**
   `image bytes -> Content Understanding analyzer -> structured fields`. Module 1 uses a multimodal LLM prompt to analyze an image; Module 4 uses a predefined analyzer/schema. Generative prompting is not schema-driven analysis. Unstructured input becomes structured output useful for automation, search, and indexing; configured analyzer is not necessarily executed, and structural SDK verification is not analyzer runtime verification.
 
-- [x] **Remember endpoint and configuration**
+- [ ] **Remember endpoint and configuration**
   The implementation uses `ENDPOINT`, `ANALYZER`, API version `2025-11-01`, and the Foundry resource endpoint `https://<resource>.services.ai.azure.com`. This is distinct from Azure OpenAI `/openai/v1/` and Foundry project `/api/projects/...` endpoints.
 
 ### Multimodal Content Understanding Studio
 
-- [x] **Understand the analyzer lifecycle**
+- [ ] **Understand the analyzer lifecycle**
   Choose representative sample content, define the desired schema, build the analyzer, test it on different content, and reuse it for structured extraction: `sample content -> schema -> analyzer -> test content -> structured fields`. This is schema design and analyzer testing, not ordinary ML training.
 
-- [x] **Distinguish prebuilt analyzers**
+- [ ] **Distinguish prebuilt analyzers**
   Read provides general text-oriented extraction such as words, paragraphs, formulas, and barcodes. Layout adds document structure such as tables, figures, structural elements, hyperlinks, and annotations where supported.
 
-- [x] **Understand custom analyzers**
+- [ ] **Understand custom analyzers**
   A custom analyzer is designed around business-specific fields; its schema defines the output contract and is reusable across similar content. A custom analyzer is not generic OCR.
 
-- [x] **Understand the four modalities**
+- [ ] **Understand the four modalities**
   Documents can provide invoice fields including custom `TotalQuantity`; images can extract slide `Title`, `Summary`, `Charts`, `QuarterlyRevenue`, and `ProductCategories`; audio can extract voicemail `Caller`, `Summary`, `Actions`, `CallbackNumber`, and `AlternativeContacts`; video can extract meeting `Summary`, `Participants`, `ParticipantNames`, `SharedSlides`, and `AssignedActions` using transcript/audio plus visual information. Transcription is not full information extraction.
 
-- [x] **Keep the Content Understanding mental model**
+- [ ] **Keep the Content Understanding mental model**
   Unstructured content becomes structured business data: schema is the desired output contract and analyzer is the reusable extractor. Read/Layout are general extraction; custom analyzers are business-specific. OCR and transcription are not full Content Understanding, multimodal includes documents/images/audio/video, sample content differs from test content, and configured analyzer is not necessarily executed.
 
-- [x] **Separate Studio design from SDK programming**
+- [ ] **Separate Studio design from SDK programming**
   This exercise is Studio/analyzer design. The next Microsoft exercise is programmatic Content Understanding client/API usage; these concepts should not be mixed.
 
 ### Content Understanding API client
 
-- [x] **Distinguish the exercises**
+- [ ] **Distinguish the exercises**
   Exercise 01 designs an analyzer/schema in Studio; Exercise 02 creates and uses an analyzer programmatically with the Python SDK.
 
-- [x] **Understand the SDK client pattern**
+- [ ] **Understand the SDK client pattern**
   `ContentUnderstandingClient` uses `AzureKeyCredential` in this lab. This key-auth pattern differs from earlier `DefaultAzureCredential` Content Understanding examples.
 
-- [x] **Understand analyzer creation**
+- [ ] **Understand analyzer creation**
   `begin_create_analyzer(...) -> poller -> .result()` creates or replaces an analyzer as a long-running Azure operation.
 
-- [x] **Understand analyzer consumption**
+- [ ] **Understand analyzer consumption**
   `begin_analyze_binary(...) -> poller -> .result()` submits business-card bytes to an analyzer and waits for structured results.
 
-- [x] **Remember the business-card schema**
+- [ ] **Remember the business-card schema**
   The schema fields are `Company`, `Name`, `Title`, `Email`, and `Phone`. An analyzer schema is a reusable structured-output contract.
 
-- [x] **Separate structural and runtime verification**
+- [ ] **Separate structural and runtime verification**
   Structural SDK verification does not prove real analyzer creation or business-card extraction succeeded.
 
 ### Document Intelligence
 
-- [x] **Understand the client and authentication**
+- [ ] **Understand the client and authentication**
   `DocumentIntelligenceClient` uses `AzureKeyCredential` in this lab, unlike earlier Entra-based examples.
 
-- [x] **Understand analysis flow**
+- [ ] **Understand analysis flow**
   `begin_analyze_document(...) -> poller -> .result()` submits a document and waits for the long-running operation to complete.
 
-- [x] **Distinguish model types**
+- [ ] **Distinguish model types**
   Read provides OCR/general text extraction; a prebuilt model such as `prebuilt-invoice` provides a ready-made schema; a custom model is trained/configured in Studio for organization-specific extraction.
 
-- [x] **Remember invoice fields**
+- [ ] **Remember invoice fields**
   The prebuilt invoice example extracts `VendorName`, `CustomerName`, and `InvoiceTotal`, including confidence values.
 
-- [x] **Remember custom model requirements**
+- [ ] **Remember custom model requirements**
   Custom model training requires Blob Storage, Studio, and a model ID. Document Intelligence is specialized for document extraction, while Content Understanding is a broader multimodal/schema analyzer workflow.
 
-- [x] **Separate structural and runtime verification**
+- [ ] **Separate structural and runtime verification**
   Structural SDK verification does not prove real Azure execution or custom-model training succeeded.
 
 ### Knowledge mining with Azure AI Search
 
-- [x] **Understand the knowledge-mining pipeline**
+- [ ] **Understand the knowledge-mining pipeline**
   `documents -> indexer -> AI skillset -> enriched index -> SearchClient`. The indexer handles ingestion/orchestration, the skillset performs AI enrichment, and the index stores searchable enriched fields.
 
-- [x] **Understand the SearchClient boundary**
+- [ ] **Understand the SearchClient boundary**
   `SearchClient` queries the finished index; it does not create or index documents in this application. The fields used here are `title`, `locations`, `persons`, and `keyPhrases`.
 
-- [x] **Distinguish Azure AI Search from Content Understanding**
+- [ ] **Distinguish Azure AI Search from Content Understanding**
   Azure AI Search builds searchable enriched indexes, while Content Understanding performs analyzer/schema-driven extraction from multimodal content. The current Microsoft lab excludes knowledge-store steps.
 
-- [x] **Separate structural and runtime verification**
+- [ ] **Separate structural and runtime verification**
   Structural Search SDK verification does not prove real Azure Search, indexer, or enrichment runtime execution.
 
 ### RAG and grounding
