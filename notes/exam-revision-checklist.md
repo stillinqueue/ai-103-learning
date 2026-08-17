@@ -210,6 +210,23 @@
 
   `A2A -> agent communicates with another agent`
 
+### Azure Language text analysis
+
+- [x] **Understand the Azure Language client pattern**
+  `TextAnalyticsClient` is the service client, authenticated with `DefaultAzureCredential` and configured with the `FOUNDRY_ENDPOINT` service endpoint.
+
+- [x] **Understand language detection**
+  `detect_language` returns the detected language and ISO language code. It is useful when downstream processing depends on knowing the text language.
+
+- [x] **Understand Named Entity Recognition**
+  `recognize_entities` finds and categorizes entities such as people, organizations, locations, dates, and other concepts. Entity recognition is a specialized NLP operation.
+
+- [x] **Understand PII detection and redaction**
+  `recognize_pii_entities` identifies personally identifiable information, returns categorized PII entities, and provides redacted text.
+
+- [x] **Keep the Azure Language mental model**
+  Azure Language provides specialized NLP service APIs. NER identifies and categorizes real-world entities in text; PII detection identifies sensitive personal information and can redact it. A specialized NLP API is not general-purpose LLM prompting, and a local OpenAI approximation is not Azure Language. Syntax/import verification is not successful Azure service execution.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
