@@ -318,6 +318,23 @@
 - [x] **Remember the runtime boundary**
   Azure CLI authentication is blocked in this Codespace and `pyaudio`/native microphone-speaker support is unavailable, so no real Voice Live session was runtime-verified.
 
+### Translation
+
+- [x] **Understand Azure Translator**
+  `TextTranslationClient` accepts `InputTextItem` values; `get_supported_languages(scope="translation")` provides valid target codes, and `translate(...)` performs translation with automatic source-language detection and an application-supplied target language.
+
+- [x] **Understand Azure Speech translation**
+  `SpeechTranslationConfig` configures the service, `TranslationRecognizer` recognizes source speech such as `en-US`, multiple target languages can be added, translated text is returned per target language, and `SpeechSynthesizer` can speak each translated result.
+
+- [x] **Remember the lab voice mapping**
+  French uses `fr-FR-HenriNeural`, Spanish uses `es-ES-ElviraNeural`, and Hindi uses `hi-IN-MadhurNeural`.
+
+- [x] **Keep the translation mental model**
+  Translation is not transcription: transcription is `speech -> text` in the same language, while text translation is `text in language A -> text in language B`. Speech translation can combine recognition, translation, and synthesis. Azure Translator handles text translation; Azure Speech handles speech translation and synthesis here. Structural SDK verification is not successful Azure service execution, and direct LLM translation is not Azure Translator SDK verification.
+
+- [x] **Remember the translation architectures**
+  Text is `app -> Azure Translator -> translated text`. Speech is `microphone -> TranslationRecognizer -> translated text -> SpeechSynthesizer -> speaker`. Both use the base Cognitive Services endpoint and `DefaultAzureCredential`; Azure CLI/Entra authentication remains unavailable in this Codespace.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
