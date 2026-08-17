@@ -227,6 +227,26 @@
 - [x] **Keep the Azure Language mental model**
   Azure Language provides specialized NLP service APIs. NER identifies and categorizes real-world entities in text; PII detection identifies sensitive personal information and can redact it. A specialized NLP API is not general-purpose LLM prompting, and a local OpenAI approximation is not Azure Language. Syntax/import verification is not successful Azure service execution.
 
+### Foundry text analysis agent
+
+- [x] **Understand the Foundry agent client pattern**
+  `AIProjectClient` uses `DefaultAzureCredential`; `get_openai_client()` provides the Responses API client, and `agent_reference` targets an existing Foundry agent by name.
+
+- [x] **Understand the agent-mediated architecture**
+  `Python client -> Foundry Agent -> Azure Language MCP tool`. The client does not call `TextAnalyticsClient` directly. The agent can choose the appropriate connected language capability based on the prompt, while MCP exposes external tools and capabilities to the agent.
+
+- [x] **Recognize language-agent tasks**
+  Lab examples include named entity recognition, PII identification and redaction, and sentiment analysis.
+
+- [x] **Keep the direct-versus-agent mental model**
+  Direct SDK call is not the same as an agent-mediated tool call. Module 1 is `app -> Azure Language directly`; Module 2 is `app -> Foundry agent -> Azure Language MCP`. `agent_reference` selects the existing Foundry agent, and a local direct OpenAI prompt would not reproduce this Microsoft agent/MCP architecture.
+
+- [x] **Separate structural and runtime verification**
+  Syntax/import and SDK-surface checks do not prove successful Foundry runtime execution.
+
+- [x] **Remember the SDK version boundary**
+  The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace had `2.3.0`. The API surface used here remained compatible in this environment; do not generalize that result to every beta or stable SDK version.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

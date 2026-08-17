@@ -12,7 +12,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
 | [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
-| [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 1 / 7 modules | 🟡 In progress |
+| [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 2 / 7 modules | 🟡 In progress |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
 ---
@@ -37,7 +37,7 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) — 1 / 7 modules**
+**[Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) — 2 / 7 modules**
 
 This is the current area of active work. The completed AI agent exercises are located under `implementations/agents/`, and natural-language implementations are located under `implementations/natural-language/`. Additional modules will be added as the learning path progresses.
 
@@ -47,6 +47,10 @@ This is the current area of active work. The completed AI agent exercises are lo
   - Azure Language reference implementation using `TextAnalyticsClient`, language detection, named entity recognition, and PII detection/redaction
   - Local OpenAI practice approximation verified against all five Microsoft review files
   - Azure service execution remains unavailable in the Codespace because the required endpoint and supported authentication are not available
+- `language-agent`: completed
+  - Azure/Foundry client pattern using `AIProjectClient`, `DefaultAzureCredential`, `get_openai_client()`, and `agent_reference`
+  - Existing Foundry `Text-Analysis-Agent` architecture with Azure Language MCP tool documented and structurally verified
+  - No real Foundry runtime call was executed because the required project, agent, MCP connection, endpoint, and authentication were unavailable
 
 ### Completed exercise
 
