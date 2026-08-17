@@ -335,6 +335,23 @@
 - [x] **Remember the translation architectures**
   Text is `app -> Azure Translator -> translated text`. Speech is `microphone -> TranslationRecognizer -> translated text -> SpeechSynthesizer -> speaker`. Both use the base Cognitive Services endpoint and `DefaultAzureCredential`; Azure CLI/Entra authentication remains unavailable in this Codespace.
 
+### Multimodal vision input
+
+- [x] **Understand multimodal input**
+  One model request can contain both text and image input. `input_text`, `input_image`, and `response.output_text` form the core Responses API pattern.
+
+- [x] **Understand image transport methods**
+  A remote URL can be supplied directly as image input. A local image can be read as bytes, base64 encoded, and sent as a `data:image/jpeg;base64,...` data URL.
+
+- [x] **Understand the Responses API request**
+  `client.responses.create(...)` accepts developer/system instructions and user content combining text and an image in the same request.
+
+- [x] **Understand Azure vision authentication and endpoint**
+  `DefaultAzureCredential` and `get_bearer_token_provider` supply Entra authentication for the Azure OpenAI client. The endpoint is `https://<resource>.openai.azure.com/openai/v1/`, and `MODEL_DEPLOYMENT` identifies the Azure model deployment.
+
+- [x] **Keep the vision mental model**
+  Multimodal means multiple input modalities in one model interaction. Generative multimodal image understanding is distinct from specialized computer-vision SDK analysis. URL and base64 images are transport methods, not different vision capabilities. A CLI loop is not conversation memory; independent `responses.create(...)` calls remain stateless unless history or conversation state is supplied. Local OpenAI success is not Azure runtime verification, and payload validation is not successful Azure service execution.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
