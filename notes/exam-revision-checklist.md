@@ -392,6 +392,26 @@
 - [x] **Remember Sora configuration**
   The starter uses `OPENAI_BASE_URL`, `MODEL_DEPLOYMENT`, the `https://<resource>.openai.azure.com/openai/v1/` endpoint, and the official `Sora-2` model deployment.
 
+### Azure Content Understanding
+
+- [x] **Understand the Content Understanding client**
+  `ContentUnderstandingClient` accepts `AnalysisInput` and returns an `AnalysisResult`; `DefaultAzureCredential` supplies Azure authentication.
+
+- [x] **Understand the analyzer mental model**
+  An analyzer is created and configured separately. The application references it through `ANALYZER`, and the analyzer defines the structured output schema rather than the request redefining it each time.
+
+- [x] **Understand long-running analysis**
+  `begin_analyze(...)` returns a poller, and `.result()` waits for and retrieves the completed operation. Azure methods prefixed with `begin_` commonly represent long-running operations.
+
+- [x] **Understand structured fields**
+  The lab schema contains `Description` as a String and `Tags` as a List of Strings. Extract string fields with `value_string`; iterate arrays with `value_array`, whose elements expose their own `value_string`.
+
+- [x] **Keep the Content Understanding mental model**
+  `image bytes -> Content Understanding analyzer -> structured fields`. Module 1 uses a multimodal LLM prompt to analyze an image; Module 4 uses a predefined analyzer/schema. Generative prompting is not schema-driven analysis. Unstructured input becomes structured output useful for automation, search, and indexing; configured analyzer is not necessarily executed, and structural SDK verification is not analyzer runtime verification.
+
+- [x] **Remember endpoint and configuration**
+  The implementation uses `ENDPOINT`, `ANALYZER`, API version `2025-11-01`, and the Foundry resource endpoint `https://<resource>.services.ai.azure.com`. This is distinct from Azure OpenAI `/openai/v1/` and Foundry project `/api/projects/...` endpoints.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
