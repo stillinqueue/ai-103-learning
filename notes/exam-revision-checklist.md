@@ -278,6 +278,26 @@
 - [x] **Understand authentication patterns**
   The Microsoft starter contains `FOUNDRY_KEY`, while the completed Entra pattern uses `DefaultAzureCredential` with `FOUNDRY_ENDPOINT`. Key-based and Entra-based authentication are different patterns; do not mix them without understanding which constructor or API expects each one.
 
+### Azure Speech MCP agent
+
+- [x] **Understand the Foundry agent client pattern**
+  `AIProjectClient` uses `DefaultAzureCredential`; `get_openai_client()` provides the Responses API client, and `agent_reference` targets the existing `speech-agent`.
+
+- [x] **Understand the agent/tool architecture**
+  `Python client -> Foundry agent -> Azure Speech MCP -> Azure Speech`. The client does not call the Azure Speech SDK directly. MCP exposes speech capabilities as agent tools, and the agent interprets the prompt to invoke the appropriate speech operation.
+
+- [x] **Understand the storage role**
+  Synthesized audio may need persistent storage. The lab uses Azure Blob Storage for generated audio, while SAS/container access belongs to the MCP tool and storage integration, not the Python client's Foundry authentication.
+
+- [x] **Separate authentication relationships**
+  Python client to Foundry uses `DefaultAzureCredential`. The Foundry MCP connection to Azure Speech and storage uses the configured connection credentials or SAS mechanism required by the lab.
+
+- [x] **Keep the Module 3/4/5 mental model**
+  Module 3 is `app -> AzureOpenAI speech model`; Module 4 is `app -> Azure Speech SDK directly`; Module 5 is `app -> Foundry agent -> Azure Speech MCP`. A connected MCP tool is not necessarily executed, and a tool request is not tool execution. Agent-mediated speech is distinct from a direct SDK speech call, structural verification is not runtime verification, and Blob Storage may be part of a speech-generation tool workflow.
+
+- [x] **Remember the SDK boundary**
+  The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace has `2.3.0`. The APIs used by this exercise remained compatible here; do not assume all beta and stable versions are interchangeable.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
