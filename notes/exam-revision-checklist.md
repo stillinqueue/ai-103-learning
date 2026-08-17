@@ -472,6 +472,20 @@
 - [x] **Separate structural and runtime verification**
   Structural SDK verification does not prove real Azure execution or custom-model training succeeded.
 
+### Knowledge mining with Azure AI Search
+
+- [x] **Understand the knowledge-mining pipeline**
+  `documents -> indexer -> AI skillset -> enriched index -> SearchClient`. The indexer handles ingestion/orchestration, the skillset performs AI enrichment, and the index stores searchable enriched fields.
+
+- [x] **Understand the SearchClient boundary**
+  `SearchClient` queries the finished index; it does not create or index documents in this application. The fields used here are `title`, `locations`, `persons`, and `keyPhrases`.
+
+- [x] **Distinguish Azure AI Search from Content Understanding**
+  Azure AI Search builds searchable enriched indexes, while Content Understanding performs analyzer/schema-driven extraction from multimodal content. The current Microsoft lab excludes knowledge-store steps.
+
+- [x] **Separate structural and runtime verification**
+  Structural Search SDK verification does not prove real Azure Search, indexer, or enrichment runtime execution.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
