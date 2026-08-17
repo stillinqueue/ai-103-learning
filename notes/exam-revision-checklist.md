@@ -298,6 +298,26 @@
 - [x] **Remember the SDK boundary**
   The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace has `2.3.0`. The APIs used by this exercise remained compatible here; do not assume all beta and stable versions are interchangeable.
 
+### Voice Live agent
+
+- [x] **Understand the Voice Live client pattern**
+  `azure.ai.voicelive` provides asynchronous `connect(...)`; `AzureCliCredential` authenticates the client, `AgentConfig` identifies the Foundry project/agent, `RequestSession` configures the session, and server events drive the conversation.
+
+- [x] **Understand real-time audio**
+  Microphone audio is streamed into an ongoing session and synthesized response audio is streamed back. Voice Activity Detection identifies turns; multilingual semantic VAD helps detect boundaries, noise reduction improves microphone input, echo cancellation avoids treating speaker output as new input, and interruption/barge-in allows the user to interrupt agent speech.
+
+- [x] **Know the important Voice Live APIs**
+  `InputAudioFormat`, `OutputAudioFormat`, `Modality`, `ServerEventType`, `AudioNoiseReduction`, `AudioEchoCancellation`, and `AzureSemanticVadMultilingual` configure and process the real-time session.
+
+- [x] **Keep the Module 3-6 mental model**
+  Module 3 is `app -> AzureOpenAI` speech model; Module 4 is direct Azure Speech SDK; Module 5 is Foundry agent -> Azure Speech MCP; Module 6 is a persistent real-time Voice Live session -> Foundry agent. A streaming voice session is not independent TTS/STT requests; VAD decides conversational turns, echo cancellation is distinct from noise reduction, and structural SDK validation is not a successful real-time audio session.
+
+- [x] **Remember endpoint and agent configuration**
+  Voice Live expects the base Foundry resource endpoint without `/api/projects/...`. Agent names/IDs are case-sensitive, and the official text inconsistently uses `chat-agent` and `Chat-Agent`; the deployed agent value must be used exactly.
+
+- [x] **Remember the runtime boundary**
+  Azure CLI authentication is blocked in this Codespace and `pyaudio`/native microphone-speaker support is unavailable, so no real Voice Live session was runtime-verified.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

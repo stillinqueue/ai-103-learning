@@ -12,7 +12,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 |---|---|---|
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
 | [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
-| [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 5 / 7 modules | 🟡 In progress |
+| [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 6 / 7 modules | 🟡 In progress |
 | [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 0 / 8 modules | ⬜ Not started |
 
 ---
@@ -37,7 +37,7 @@ for a full breakdown of what was and was not reproduced on Azure.
 
 ## Next learning path
 
-**[Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) — 5 / 7 modules**
+**[Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) — 6 / 7 modules**
 
 This is the current area of active work. The completed AI agent exercises are located under `implementations/agents/`, and natural-language implementations are located under `implementations/natural-language/`. Additional modules will be added as the learning path progresses.
 
@@ -63,6 +63,9 @@ This is the current area of active work. The completed AI agent exercises are lo
   - Foundry client targets the existing `speech-agent` with `agent_reference`
   - Azure Speech capabilities are mediated by the configured Speech MCP server
   - Blob Storage/SAS integration and MCP approval boundaries documented; runtime remains unavailable
+- `voice-live-agent`: completed
+  - Real-time Voice Live client with asynchronous connection, session configuration, streamed audio, and server-event processing
+  - Microphone/speaker runtime remains unavailable because Azure authentication and native audio support are blocked in the Codespace
 
 ### Completed exercise
 
