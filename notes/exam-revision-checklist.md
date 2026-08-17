@@ -261,6 +261,23 @@
 - [x] **Keep the speech mental model**
   TTS is `text -> audio`; STT/transcription is `audio -> text`. This lab uses speech-capable generative AI models through the OpenAI SDK, not the classic Azure AI Speech SDK/service APIs. `AzureOpenAI` represents an Azure-hosted deployment/client, while local OpenAI practice is direct OpenAI API usage and not Azure runtime verification. Syntax/import verification is not successful Azure model execution.
 
+### Azure Speech SDK
+
+- [x] **Understand Azure Speech SDK configuration**
+  `azure.cognitiveservices.speech` provides `SpeechConfig`, using `DefaultAzureCredential` with the Foundry/Cognitive Services endpoint.
+
+- [x] **Understand speech synthesis**
+  `AudioOutputConfig` selects the output file, `SpeechSynthesizer` handles synthesis, and `speak_text_async(...).get()` returns the result. `ResultReason.SynthesizingAudioCompleted` indicates success, and output can be written to `greeting.wav`.
+
+- [x] **Understand speech recognition**
+  `AudioConfig` supplies an audio file to `SpeechRecognizer`; `recognize_once_async().get()` performs recognition. `ResultReason.RecognizedSpeech` indicates success and recognized text is available through `result.text`.
+
+- [x] **Keep the Azure Speech mental model**
+  Module 3 uses generative speech models through `AzureOpenAI`; Module 4 uses the specialized Azure Speech SDK. TTS is `text -> speech`, STT is `speech -> text`, `SpeechSynthesizer` handles synthesis, and `SpeechRecognizer` handles recognition. Structural SDK validation is not successful Azure Speech runtime execution, and direct OpenAI speech practice is not Azure Speech SDK verification.
+
+- [x] **Understand authentication patterns**
+  The Microsoft starter contains `FOUNDRY_KEY`, while the completed Entra pattern uses `DefaultAzureCredential` with `FOUNDRY_ENDPOINT`. Key-based and Entra-based authentication are different patterns; do not mix them without understanding which constructor or API expects each one.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
