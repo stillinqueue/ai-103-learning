@@ -247,6 +247,20 @@
 - [x] **Remember the SDK version boundary**
   The Microsoft lab pins `azure-ai-projects==2.0.0b4`, while this Codespace had `2.3.0`. The API surface used here remained compatible in this environment; do not generalize that result to every beta or stable SDK version.
 
+### Speech-capable generative AI
+
+- [x] **Understand the Azure speech-capable client pattern**
+  `AzureOpenAI` uses `DefaultAzureCredential` with `get_bearer_token_provider`; `MODEL_ENDPOINT` selects the Azure endpoint and `MODEL_NAME` selects the deployed speech model.
+
+- [x] **Understand text-to-speech**
+  `client.audio.speech.with_streaming_response.create(...)` generates audio from text. The voice can be selected, instructions can influence delivery or style where supported, and the response can be streamed to an audio file.
+
+- [x] **Understand speech-to-text**
+  `client.audio.transcriptions.create(...)` accepts an audio file opened in binary mode and returns transcription text from the deployed model.
+
+- [x] **Keep the speech mental model**
+  TTS is `text -> audio`; STT/transcription is `audio -> text`. This lab uses speech-capable generative AI models through the OpenAI SDK, not the classic Azure AI Speech SDK/service APIs. `AzureOpenAI` represents an Azure-hosted deployment/client, while local OpenAI practice is direct OpenAI API usage and not Azure runtime verification. Syntax/import verification is not successful Azure model execution.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**
