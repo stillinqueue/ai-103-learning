@@ -369,6 +369,29 @@
 - [x] **Remember the model boundary**
   The Microsoft exercise recommends `gpt-image-2`, and local OpenAI practice also succeeded with `gpt-image-2`; Azure deployment availability and quota may differ from direct OpenAI availability.
 
+### Sora video generation
+
+- [x] **Understand the video generation API**
+  `client.videos.create(...)` returns a video job/object with an ID and status. Generation is asynchronous: creation success does not mean the finished video is ready.
+
+- [x] **Understand polling and terminal states**
+  `client.videos.retrieve(video_id)` polls the job until `completed`, `failed`, or `cancelled`. Failed and cancelled jobs must not be treated as downloadable successes.
+
+- [x] **Understand video download**
+  `client.videos.download_content(video_id, variant="video")` retrieves completed content, and `write_to_file(...)` can save it as an MP4.
+
+- [x] **Understand remix**
+  `client.videos.remix(...)` combines an existing generated video with a new prompt and creates a new asynchronous job. The new job must be polled separately; remix is not in-place modification.
+
+- [x] **Understand image-to-video**
+  `input_reference` supplies a binary-opened reference image that guides generation. Image-to-video is distinct from still-image generation.
+
+- [x] **Keep the video mental model**
+  Module 1 understands an existing image; Module 2 generates a still image; Module 3 generates or remixes video. Still-image generation may return output directly, while video uses `create -> poll -> terminal status -> download`. Structural API verification is not Azure Sora runtime access, and model availability/quota/access can differ by Azure subscription.
+
+- [x] **Remember Sora configuration**
+  The starter uses `OPENAI_BASE_URL`, `MODEL_DEPLOYMENT`, the `https://<resource>.openai.azure.com/openai/v1/` endpoint, and the official `Sora-2` model deployment.
+
 ### RAG and grounding
 
 - [ ] **Expand RAG as Retrieval-Augmented Generation**

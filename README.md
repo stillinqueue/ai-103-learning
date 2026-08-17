@@ -13,7 +13,7 @@ Hands-on labs and notes for **Microsoft AI-103: Developing AI Apps and Agents on
 | [Develop generative AI apps in Azure](https://learn.microsoft.com/en-us/training/paths/develop-generative-ai-apps/) | 6 / 6 modules | ✅ Completed |
 | [Develop AI agents on Azure](https://learn.microsoft.com/en-us/training/paths/develop-ai-agents-azure/) | 9 / 9 modules | ✅ Completed |
 | [Develop natural language solutions in Azure](https://learn.microsoft.com/en-us/training/paths/develop-language-solutions-azure-ai/) | 7 / 7 modules | ✅ Completed |
-| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 2 / 8 modules | 🟡 In progress |
+| [Extract insights from visual data on Azure](https://learn.microsoft.com/en-us/training/paths/insight-visual-data/) | 3 / 8 modules | 🟡 In progress |
 
 ---
 
@@ -79,6 +79,9 @@ This is the current area of active work. The completed AI agent exercises are lo
 - `generate-image`: completed
   - Azure image-generation client with `images.generate(...)`, `b64_json` decoding, and sequential PNG saving
   - Local OpenAI `gpt-image-2` practice verified; generated runtime PNG was removed after inspection
+- `generate-video`: completed
+  - Azure Sora text-to-video, polling, download, remix, and reference-image job patterns
+  - Structural asynchronous workflow verification completed; no Azure or direct OpenAI video job was run
 
 ### Completed exercise
 
